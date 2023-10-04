@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morphological Maze: Control Reconfigurable Soft Robots with Fine-grained Morphology Change</title>
+<meta name="description" content="Abstract">
+<link rel="stylesheet" href="css/style.css">
+<link rel="canonical" href="https://morphologicalmaze.github.io/">
+<link rel="shortcut icon" href="asset/pic/ditto.jpg"> 
+</head>
+<body>
+
+<main>
+<article class="project">
+<div class="cover">
+<div class="wrapper">
+<h1>Morphological Maze: Control Reconfigurable Soft Robots with Fine-grained Morphology Change</h1>
+<p class="authors">
+<span class="author"><a target="_blank" href="https://morphologicalmaze.github.io/">Anonymous</a></span> 
+</p>
+<!--<p class="venues">Preprint</p>-->
+
+<!--<div class="image"><img src="asset/title.gif" /></div>-->
+<!--<p class="buttons">
+<a href="https://arxiv.org/" target="_blank">Paper</a>
+<a href="https://twitter.com/" target="_blank">Twitter</a>
+<a href="https://github.com/" target="_blank">Code</a>
+</p>-->
+</div>
+</div>
+
+<div class="content wrapper">
+  
+<h2 id="abstract">Abstract</h2>
+<p>Robot co-design, where the morphology of a robot is optimized jointly with a learned policy to solve a specific task, is an emerging area of research. 
+  It holds particular promise for soft robots, which are amenable to novel manufacturing techniques that can realize learned morphologies and actuators. 
+  Inspired by nature and recent novel robot designs, we propose to go a step further and explore the design of reconfigurable robots, defined as robots that can change their morphology within their lifetime. 
+  We formalize control of reconfigurable soft robots as a high-dimensional reinforcement learning(RL) problem. 
+  We unify morphology change, locomotion, and environment interaction in the same action space, and introduce an appropriate, coarse-to-fine curriculum that enables us to discover policies that accomplish fine-grained control of the resulting robots. 
+  We also introduce Morphological Maze, a comprehensive RL benchmark for reconfigurable soft robots that require fine-grained morphology changes to accomplish the tasks. 
+  Finally, we evaluate our proposed coarse-to-fine algorithm on Morphological Maze and demonstrate robots that learn to change their morphology several times within a sequence, uniquely enabled by our RL algorithm.</p>
+
+
+<h2 id="highlights">Highlights</h2>
+<p style="text-align: center">
+  <img style="width: 78%" src="asset/pic/teaser.jpg" />
+  </p>
+<p>In this paper, we address challenges in controlling reconfigurable robots, who can change their morphology to accomplish desired tasks. 
+  The figure above illustrates a task where a circular robot needs to alter its body shape to fit within a confined chamber to manipulate the square cargo to the target point.
+  For more information, please check our paper: <a href="asset/ICLR24_Morphological_Maze_Control_Reconfigurable_Soft_Robots_with_Fine_grained_Morphology_Change.pdf" target="_blank">click to check PDF</a>.</p>
+<!--<video controls="" muted="" style="width: 100%; border-radius: .25em">
+  <source src="/asset/drm/diamond.mp4" />
+</video>-->
+
+
+<h2 id="dmc">Morphological Maze</h2>
+<p>We demonstrate the results from Morphological Maze. Notably, policies trained under the guidance of CFP exhibit precise control over highly reconfigurable robots, enabling them to successfully accomplish their respective tasks.</p>
+<div class="videos">
+  <div class="video-row">
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/MATCH.mov" /></video>
+      <p class="caption">MATCH</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/RUN.mp4" /></video>
+      <p class="caption">RUN</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/GROW.mp4" /></video>
+      <p class="caption">GROW</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/KICK.mp4" /></video>
+      <p class="caption">KICK</p> <!-- 添加视频标题 -->
+    </div>
+  </div>
+  <div class="video-row">
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/DIG.mp4" /></video>
+      <p class="caption">DIG</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/OBSTACLE.mp4" /></video>
+      <p class="caption">OBSTACLE</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/CATCH.mp4" /></video>
+      <p class="caption">CATCH</p> <!-- 添加视频标题 -->
+    </div>
+    <div class="video-column">
+      <video controls="" muted="" autoplay="" loop=""><source src="asset/video/SLOT.mp4" /></video>
+      <p class="caption">SLOT</p> <!-- 添加视频标题 -->
+    </div>
+  </div>
+</div>
+
+
+
+<!--<style>
+.videos { display: flex; flex-wrap: wrap; align-content: space-between; gap: .5em; }
+.videos video { flex: 1; width: 23%; border-radius: .25em; }
+.restart { display: inline-block; padding: .55em 1em .45em; border-radius: .25em; background: #ddd; cursor: pointer; }
+.restart:hover { background: #eee; }
+.restart:active { background: #ccc; }
+</style>
+<script defer="">
+function restartVideos() {
+  document.querySelectorAll('.videos video').forEach((video) => {
+    video.pause()
+    video.currentTime = 0
+    video.play()
+  })
+}
+</script>
+<p style="text-align: center">
+<span class="restart" onclick="restartVideos()">Restart Videos</span>
+</p>-->
+
+
+<h2 id="scaling">COARSE-to-FINE</h2>
+<p>We implement coarse-to-fine curriculum to further enhance the agent's performance. 
+  The video demonstrates several tasks which have significantly improves.</p>
+<div class="videos">
+  <video controls="" muted="" autoplay="" loop=""><source src="asset/video/coarse-to-fine.mp4" /></video>
+</div>
+
+</div>
+</article>
+
+<script>
+document.querySelector('body').onload = function() {
+  console.log('SCROLL', window.scrollY);
+  if (window.scrollY > 10) return;
+  const element = document.querySelector('.cover')
+  const pos = element.getBoundingClientRect().top + window.scrollY
+  window.scroll({top: pos, behavior: 'smooth'})
+}
+</script>
+</main>
+
+<footer></footer>
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-78082517-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script async src='/scripts.js'></script>
+</body>
+</html>
