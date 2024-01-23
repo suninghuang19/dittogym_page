@@ -18,7 +18,6 @@
 <div class="wrapper">
 <h1>Morphological Maze: Control Reconfigurable Soft Robots with Fine-grained Morphology Change</h1>
 
-
 <!-- <!-- <p class="authors"> -->
 <span class="author"><a target="_blank" href="https://suninghuang19.github.io/">Suning Huang</a>, 
   <a target="_blank" href="https://boyuan.space/">Boyuan Chen</a>,
@@ -28,14 +27,13 @@
 
 <p class="venues">ICLR 2024</p>
 
-
-
-<!--<div class="image"><img src="asset/title.gif" /></div>-->
-<!--<p class="buttons">
+<!-- <div class="image"><img src="asset/title.gif" /></div> -->
+<p class="buttons">
 <a href="https://arxiv.org/" target="_blank">Paper</a>
 <a href="https://twitter.com/" target="_blank">Twitter</a>
-<a href="https://github.com/" target="_blank">Code</a>
-</p>-->
+<a href="https://github.com/suninghuang19/morphmaze" target="_blank">Morphological Maze</a>
+<a href="https://github.com/suninghuang19/cfp" target="_blank">CFP</a>
+</p>
 </div>
 </div>
 
@@ -51,18 +49,13 @@
   Finally, we evaluate our proposed coarse-to-fine algorithm on Morphological Maze and demonstrate robots that learn to change their morphology several times within a sequence, uniquely enabled by our RL algorithm.</p>
 
 
+
 <h2 id="highlights">Highlights</h2>
 <p style="text-align: center">
-  <img style="width: 78%" src="asset/pic/teaser.jpg" />
+  <img style="width: 100%" src="asset/pic/teaser.png" />
   </p>
-<p>In this paper, we address challenges in controlling reconfigurable robots, who can change their morphology to accomplish desired tasks. 
+<p>In this paper, we address challenges in controlling highly reconfigurable soft robots, who can change their morphology to accomplish desired tasks. 
   The figure above illustrates a task where a circular robot needs to alter its body shape to fit within a confined chamber to manipulate the square cargo to the target point.
-  For more information, please check our paper: <a href="asset/Morphological_Maze_Control_Reconfigurable_Soft_Robots_with_Fine_grained_Morphology_Change.pdf" target="_blank">click to check PDF</a>.</p>
-<!--<video controls="" muted="" style="width: 100%; border-radius: .25em">
-  <source src="/asset/drm/diamond.mp4" />
-</video>-->
-
-
 <head>
   <title>Page with GIFs</title>
   <style>
@@ -71,27 +64,43 @@
           display: flex;
           justify-content: center; /* Centers the GIFs horizontally */
           align-items: center; /* Centers the GIFs vertically */
-          height: 20vh; /* Sets the height of the container to the full viewport height */
-      }
-
-      img {
+          height: 15vh; /* Sets the height of the container to the full viewport height */
+        }
+        .gif-image {
           margin: 0px; /* Adds space between the GIFs */
+          max-width: 175px; /* Sets the maximum width for each GIF */
       }
   </style>
 </head>
 <body>
-
   <div class="centered-gifs">
-      <!-- Your GIFs -->
-      <img src="asset/gif/M.gif" alt="First GIF">
-      <img src="asset/gif/I.gif" alt="Second GIF">
-      <img src="asset/gif/T.gif" alt="Third GIF">
+    <!-- Your GIFs -->
+    <img class="gif-image" src="asset/gif/M.gif" alt="First GIF">
+    <img class="gif-image" src="asset/gif/I.gif" alt="Second GIF">
+    <img class="gif-image" src="asset/gif/T.gif" alt="Third GIF">
   </div>
-
+  <p><b>The robot can undergo intricate shape changes to form "M", "I" and "T" letters.</b>
 </body>
 
 
-<h2 id="dmc">Morphological Maze</h2>
+
+<h2 id="formalization">Formalization</h2>
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/formalization.png" />
+  </p>
+<p>(a) The soft reconfigurable robot, initialized with a specific shape, is ready to venture into the task. (b) Instead of directly controlling material points in the robot, the policy first applies actions to the action grid, which corresponds to the grid in the material point method~(MPM). (c) Each particle aggregates actuation signals from its adjacent grid points during the grid-to-particle distribution stage. (d) Under the principles of Cauchy stress and the von Mises yield criterion, we can actuate the particles in a physically plausible manner, thereby changing the robot's morphology and state.
+
+
+
+<h2 id="method">Method</h2>
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/model.png" />
+  </p>
+<p>In stage one, we train a coarse policy to efficiently explore the action space and discover meaningful action patterns. Subsequently, in stage two, we employ a coarse-to-fine approach to train a high-resolution residual policy that delves deeper into optimizing the actions for improved performance.
+
+    
+
+<h2 id="demo">Morphological Maze</h2>
 <p>We demonstrate the results from Morphological Maze. Notably, policies trained under the guidance of CFP exhibit precise control over highly reconfigurable robots, enabling them to successfully accomplish their respective tasks.</p>
 <p style="color: red;">The videos may take a few minutes to load. Thank you for your patience!</p>
 <div class="videos">
@@ -151,34 +160,43 @@
 
 
 
+<h2 id="video">Demo Video</h2>
+<head>
+  <style>
+  /* 添加一个类来居中iframe */
+  .centered-video {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  /* 可以在这里设置iframe的宽度和高度 */
+  iframe {
+      width: 560px;
+      height: 315px;
+  }
+  </style>
+  </head>
+  <body>
+  
+  <div class="centered-video">
+      <iframe src="https://www.youtube.com/embed/-fmwKZXQkBE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+  </body>
 
-<!--<style>
-.videos { display: flex; flex-wrap: wrap; align-content: space-between; gap: .5em; }
-.videos video { flex: 1; width: 23%; border-radius: .25em; }
-.restart { display: inline-block; padding: .55em 1em .45em; border-radius: .25em; background: #ddd; cursor: pointer; }
-.restart:hover { background: #eee; }
-.restart:active { background: #ccc; }
-</style>
-<script defer="">
-function restartVideos() {
-  document.querySelectorAll('.videos video').forEach((video) => {
-    video.pause()
-    video.currentTime = 0
-    video.play()
-  })
-}
-</script>
-<p style="text-align: center">
-<span class="restart" onclick="restartVideos()">Restart Videos</span>
-</p>-->
 
-
-<h2 id="scaling">COARSE-to-FINE</h2>
-<p>Please enjoy the video.</p>
-<div class="videos">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/-fmwKZXQkBE?si=GyNXk9ojox-s9-zk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
+  <h2 id="citation">Citation</h2>
+  <body>
+    <pre><code>
+      @inproceedings{chen2022nlmapsaycan,
+        title={Open-vocabulary Queryable Scene Representations for Real World Planning},
+        author={Boyuan Chen and Fei Xia and Brian Ichter and Kanishka Rao and Keerthana Gopalakrishnan and Michael S. Ryoo and Austin Stone and Daniel Kappler
+        booktitle={arXiv preprint arXiv:2209.09874},
+        year={2022}
+    }
+    </code></pre>
+  </body>
 
 
 </div>
